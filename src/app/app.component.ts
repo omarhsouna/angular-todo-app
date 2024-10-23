@@ -10,17 +10,18 @@ import { TaskService } from '../services/task.service';
   templateUrl: './app.component.html',
   imports: [ TasksComponent, TaskFormComponent],
 })
+
 export class AppComponent implements OnInit {
  tasks: Task[] = [];
  selectedTask: Task | null = null;
  constructor(private taskService: TaskService) {}
  ngOnInit(): void {
-this.taskService.getTasks().subscribe((tasks) => {
- this.tasks = tasks;
+  this.taskService.getTasks().subscribe((tasks) => {
+  this.tasks = tasks;
 });
 
  }
- setSelectTask(task: Task) {
+ setSelectedTask(task: Task) {
   this.selectedTask = this.selectedTask?.id === task.id ? null : {...task} as Task;
  }
  cancel(){
@@ -30,7 +31,6 @@ this.taskService.getTasks().subscribe((tasks) => {
   this.tasks = [...this.tasks, task];
  }
  updateTask(task: Task) {
-  console.log('task', task)
   this.tasks = this.tasks.map(item => item.id === task.id ? task : item);
  }
 
