@@ -1,0 +1,11 @@
+<form [formGroup]="taskForm" class="flex flex-col gap-2" (ngSubmit)="onSubmit()">
+    <label for="title">Title :</label>
+    <input class="h-10 border border-gray-300 rounded-lg indent-2" type="text" id="title" name="title" formControlName="title"> 
+    <label for="description">Description :</label>
+    <input class="h-10 border border-gray-300 rounded-lg indent-2" type="text" id="description" name="description" formControlName="description">  
+    <div class="flex gap-2 items-center">
+@if (!task) {<button type="button" (click)="onAddTask()" class="rounded-xl px-4 py-2 border border-gray-300 bg-green-400 text-white">Add</button>}
+        <button [disabled]="!taskForm.valid" type="submit" class="ml-auto rounded-xl px-4 py-2 border border-gray-300 bg-blue-400 text-white">Save</button>
+        <button class="rounded-xl px-4 py-2 border border-gray-300" (click)="onCancel()">Cancel</button>
+    </div>
+</form>

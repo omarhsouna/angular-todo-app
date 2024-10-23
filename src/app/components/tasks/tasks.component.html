@@ -1,0 +1,11 @@
+<ul class="border border-gray-300 rounded-lg max-w-lg overflow-hidden">
+    @for (task of tasks; track task.id) {
+        <li [class.bg-blue-500]="selectedTask&&task.id === selectedTask.id" class="cursor-pointer border-b border-gray-300 last:border-b-0 p-2 " (click)="onSelect(task)">
+            {{task.title}}
+        </li>
+    }@empty {
+        <li>
+            no tasks
+        </li>
+    }
+</ul>
